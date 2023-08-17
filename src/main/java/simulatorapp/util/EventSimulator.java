@@ -4,22 +4,42 @@ import simulatorapp.entity.SeaLion;
 
 public class EventSimulator {
 
-    //10%//the sea lion has slept +10 energy
-    //10%//the sea lion has eaten a squid  -5 energy +5 health
-    //10%//the sea lion swam -20 energy
-    //10%//the sea lion has eaten salmons -8 energy +10 health
-    //10%//the sea lion has fought with another se lion  -10 health
-    //10%//the sea lion has eaten an octopus -8 energy +10 health
-    //10%//the sea lion has eaten seaweeds -5 energy +5 health
-    //10%//the sea lion has eaten  clams -10 energy +10 health
-    //10%//the sea lion has eaten  crabs -10 energy +10 health
-    //10%// a killer whale attacked the sea lion -20 health
+//10%//he sea lion has slept +10 energy//0- 10%//
+//10%//the sea lion has eaten a squid  -5 energy +5 health//10-20%//
+//10%//the sea lion swam -20 energy //20-30%//
+//10%//the sea lion has eaten salmons -8 energy +10 health//30-40%//
+//10%//the sea lion has fought with another se lion  -10 health//40-50%//
+//10%//the sea lion has eaten an octopus -8 energy +10 health//50-60%//
+//10%//the sea lion has eaten seaweeds -5 energy +5 health//60-70%//
+//10%//the sea lion has eaten  clams -10 energy +10 health//70-80%//
+//10%//the sea lion has eaten  crabs -10 energy +10 health//80-90%//
+//10%// a killer whale attacked the sea lion -20 health //90-100%//
 
     public void startSimulation(SeaLion seaLion) {
-        while (checkStatus(seaLion)) ;{
-            int eventNumber = (int) (Math.random() * 100);
-            if (eventNumber >= 0 && eventNumber
-        }
+       while (checkStatus(seaLion)) {
+           int eventNumber = (int) (Math.random() * 100);
+           if (eventNumber >= 0 && eventNumber < 10) {
+               sleepEvent(seaLion);
+           } else if (eventNumber >= 10 && eventNumber < 20) {
+               eatSquid(seaLion);
+           } else if (eventNumber >= 20 && eventNumber < 30) {
+               swim(seaLion);
+           } else if (eventNumber >= 30 && eventNumber < 40) {
+               eatSalmons(seaLion);
+           } else if (eventNumber >= 40 && eventNumber < 50) {
+               fight(seaLion);
+           } else if (eventNumber >= 50 && eventNumber < 60) {
+               eatOctopus(seaLion);
+           } else if (eventNumber >= 60 && eventNumber < 70) {
+               eatSeaweed(seaLion);
+           } else if (eventNumber >= 70 && eventNumber < 80) {
+               eatClams(seaLion);
+           } else if (eventNumber >= 80 && eventNumber < 90) {
+               eatCrabs(seaLion);
+           } else if (eventNumber >= 90 && eventNumber < 100) {
+               killerWhaleAttack(seaLion);
+           }
+       }
     }
 
 
@@ -34,7 +54,7 @@ public class EventSimulator {
         System.out.println("The sea lion has slept! + 10 energy. Current energy:" + seaLion.getEnergy());
     }
 
-    private void EatSquid(SeaLion seaLion) {
+    private void eatSquid(SeaLion seaLion) {
         int energy = seaLion.getEnergy();
         int health = seaLion.getHealth();
         energy = energy - 5;

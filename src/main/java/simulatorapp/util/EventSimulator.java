@@ -5,15 +5,15 @@ import simulatorapp.entity.SeaLion;
 public class EventSimulator {
 
 //10%//he sea lion has slept +5 energy//0- 10%//
-//10%//the sea lion has eaten a squid  -20 energy +5 health//10-20%//
-//10%//the sea lion swam -20 energy //20-30%//
-//10%//the sea lion has eaten salmons -10 energy +5 health//30-40%//
-//10%//the sea lion has fought with another se lion  -20 health//40-50%//
-//10%//the sea lion has eaten an octopus -8 energy +10 health//50-60%//
+//10%//the sea lion has eaten a squid  -10 energy +5 health//10-20%//
+//10%//the sea lion swam -30 energy //20-30%//
+//10%//the sea lion has eaten salmons -5 energy +5 health//30-40%//
+//10%//the sea lion has fought with another se lion  -25 health//40-50%//
+//10%//the sea lion has eaten an octopus -10 energy +5 health//50-60%//
 //10%//the sea lion has eaten seaweeds -5 energy +5 health//60-70%//
-//10%//the sea lion has eaten  clams -10 energy +5 health//70-80%//
-//10%//the sea lion has eaten  crabs -10 energy +5 health//80-90%//
-//10%// a killer whale attacked the sea lion -100 health //90-100%//
+//10%//the sea lion has eaten  clams -5 energy +5 health//70-80%//
+//10%//the sea lion has eaten  crabs -5 energy +5 health//80-90%//
+//10%// a killer whale attacked the sea lion -20 health //90-100%//
 
     public void startSimulation(SeaLion seaLion) {
         while (checkStatus(seaLion)) {
@@ -62,7 +62,7 @@ public class EventSimulator {
     private void eatSquid(SeaLion seaLion) {
         int energy = seaLion.getEnergy();
         int health = seaLion.getHealth();
-        energy = energy - 20;
+        energy = energy - 10;
         if (energy > 100) {
             energy = 100;
         }
@@ -78,7 +78,7 @@ public class EventSimulator {
 
     private void swim(SeaLion seaLion) {
         int energy = seaLion.getEnergy();
-        energy = energy - 20;
+        energy = energy - 30;
         if (energy > 100) {
             energy = 100;
         }
@@ -90,7 +90,7 @@ public class EventSimulator {
     private void eatSalmons(SeaLion seaLion) {
         int energy = seaLion.getEnergy();
         int health = seaLion.getHealth();
-        energy = energy - 10;
+        energy = energy - 5;
         if (energy > 100) {
             energy = 100;
         }
@@ -104,7 +104,7 @@ public class EventSimulator {
 
     private void fight(SeaLion seaLion) {
         int health = seaLion.getHealth();
-        health = health - 20;
+        health = health - 25;
         if (health > 100) {
             health = 100;
         }
@@ -145,7 +145,7 @@ public class EventSimulator {
     private void eatClams(SeaLion seaLion) {
         int energy = seaLion.getEnergy();
         int health = seaLion.getHealth();
-        energy = energy - 10;
+        energy = energy - 5;
         if (energy > 100) {
             energy = 100;
         }
@@ -160,7 +160,7 @@ public class EventSimulator {
     private void eatCrabs(SeaLion seaLion) {
         int energy = seaLion.getEnergy();
         int health = seaLion.getHealth();
-        energy = energy - 10;
+        energy = energy - 5;
         if (energy > 100) {
             energy = 100;
         }
@@ -174,7 +174,7 @@ public class EventSimulator {
 
     private void killerWhaleAttack(SeaLion seaLion) {
         int health = seaLion.getHealth();
-        health = health - 100;
+        health = health - 20;
         if (health > 100) {
             health = 100;
         }
@@ -186,11 +186,7 @@ public class EventSimulator {
     //false - the sea lion is dead
     private boolean checkStatus(SeaLion seaLion) {
         System.out.println("Health:" + seaLion.getHealth() + "Energy:" + seaLion.getEnergy());
-        if (seaLion.getHealth() <= 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return seaLion.getHealth() > 0;
     }
 
     private void checkEnergy(SeaLion seaLion) {

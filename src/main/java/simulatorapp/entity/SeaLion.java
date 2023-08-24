@@ -16,7 +16,7 @@ public class SeaLion {
     }
 
     public int  getHealth() {
-        return this.health;
+        return health;
     }
 
     public void setEnergy(int energy) {
@@ -24,11 +24,11 @@ public class SeaLion {
     }
 
     public int getEnergy() {
-        return this.energy;
+        return energy;
     }
 
     public double getCANINES() {
-        return this.CANINES;
+        return CANINES;
     }
 
 }

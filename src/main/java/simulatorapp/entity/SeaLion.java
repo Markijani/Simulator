@@ -28,7 +28,7 @@ public class SeaLion {
     }
 
     public double getCANINES() {
-        return CANINES;
+        return this.CANINES;
     }
 
 }

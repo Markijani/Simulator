@@ -51,9 +51,9 @@ public class EventSimulator {
     private void sleepEvent(SeaLion seaLion) {
         int energy = seaLion.getEnergy();
         energy = energy + 5;
-        checkHighEnergy(seaLion);
+        checkEnergy(seaLion);
         seaLion.setEnergy(energy);
-        checkLowEnergy(seaLion);
+        checkLowHealth(seaLion);
         System.out.println("The sea lion has slept! + 10 energy. Current energy:" + seaLion.getEnergy());
     }
 
@@ -61,10 +61,10 @@ public class EventSimulator {
         int energy = seaLion.getEnergy();
         int health = seaLion.getHealth();
         energy = energy - 10;
-        checkLowEnergy(seaLion);
-        checkHighEnergy(seaLion);
+        checkEnergy(seaLion);
         health = health + 5 + (int) (seaLion.getCANINES() * 2);
-        checkHealth(seaLion);
+        checkLowHealth(seaLion);
+        checkHighHealth(seaLion);
         seaLion.setEnergy(energy);
         seaLion.setHealth(health);
         System.out.println("The sea lion has eaten a squid. Current energy:" + seaLion.getEnergy() + "Current health:" + seaLion.getHealth());
@@ -73,8 +73,8 @@ public class EventSimulator {
     private void swim(SeaLion seaLion) {
         int energy = seaLion.getEnergy();
         energy = energy - 30;
-        checkLowEnergy(seaLion);
-        checkHighEnergy(seaLion);
+        checkLowHealth(seaLion);
+        checkEnergy(seaLion);
         seaLion.setEnergy(energy);
         System.out.println("The sea lion swam! - 20 energy. Current energy:" + seaLion.getEnergy());
     }
@@ -83,18 +83,18 @@ public class EventSimulator {
         int energy = seaLion.getEnergy();
         int health = seaLion.getHealth();
         energy = energy - 5;
-        checkLowEnergy(seaLion);
-        checkHighEnergy(seaLion);
+        checkEnergy(seaLion);
         health = health + 5 + (int) (seaLion.getCANINES() * 2);
-        checkHealth(seaLion);
+        checkLowHealth(seaLion);
+        checkHighHealth(seaLion);
         System.out.println("The sea lion has eaten salmons. Current energy:" + seaLion.getEnergy() + "Current health:" + seaLion.getHealth());
     }
 
     private void fight(SeaLion seaLion) {
         int health = seaLion.getHealth();
         health = health - 25;
-        checkHealth(seaLion);
-        checkLowEnergy(seaLion);
+        checkHighHealth(seaLion);
+        checkLowHealth(seaLion);
         System.out.println("The sea lion has fought with another one. Current health" + seaLion.getHealth());
     }
 
@@ -102,10 +102,10 @@ public class EventSimulator {
         int energy = seaLion.getEnergy();
         int health = seaLion.getHealth();
         energy = energy - 10;
-        checkLowEnergy(seaLion);
-        checkHighEnergy(seaLion);
+        checkEnergy(seaLion);
         health = health + 5 + (int) (seaLion.getCANINES() * 2);
-        checkHealth(seaLion);
+        checkLowHealth(seaLion);
+        checkHighHealth(seaLion);
         System.out.println("The sea lion has eaten an octopus. Current energy:" + seaLion.getEnergy() + "Current health:" + seaLion.getHealth());
     }
 
@@ -113,10 +113,10 @@ public class EventSimulator {
         int energy = seaLion.getEnergy();
         int health = seaLion.getHealth();
         energy = energy - 5;
-        checkLowEnergy(seaLion);
-        checkHighEnergy(seaLion);
+        checkEnergy(seaLion);
         health = health + 5 + (int) (seaLion.getCANINES() * 2);
-        checkHealth(seaLion);
+        checkLowHealth(seaLion);
+        checkHighHealth(seaLion);
         System.out.println("The sea lion has eaten seaweeds. Current energy:" + seaLion.getEnergy() + "Current health:" + seaLion.getHealth());
     }
 
@@ -124,10 +124,10 @@ public class EventSimulator {
         int energy = seaLion.getEnergy();
         int health = seaLion.getHealth();
         energy = energy - 5;
-        checkLowEnergy(seaLion);
-        checkHighEnergy(seaLion);
+        checkEnergy(seaLion);
         health = health + 5 + (int) (seaLion.getCANINES() * 2);
-        checkHealth(seaLion);
+        checkLowHealth(seaLion);
+        checkHighHealth(seaLion);
         System.out.println("The sea lion has eaten clams. Current energy:" + seaLion.getEnergy() + "Current health:" + seaLion.getHealth());
     }
 
@@ -135,18 +135,18 @@ public class EventSimulator {
         int energy = seaLion.getEnergy();
         int health = seaLion.getHealth();
         energy = energy - 5;
-        checkLowEnergy(seaLion);
-        checkHighEnergy(seaLion);
+        checkEnergy(seaLion);
         health = health + 5 + (int) (seaLion.getCANINES() * 2);
-        checkHealth(seaLion);
+        checkLowHealth(seaLion);
+        checkHighHealth(seaLion);
         System.out.println("The sea lion has eaten crabs. Current energy:" + seaLion.getEnergy() + "Current health:" + seaLion.getHealth());
     }
 
     private void killerWhaleAttack(SeaLion seaLion) {
         int health = seaLion.getHealth();
         health = health - 20;
-        checkHealth(seaLion);
-        checkLowEnergy(seaLion);
+        checkHighHealth(seaLion);
+        checkLowHealth(seaLion);
         System.out.println("The sea lion was attacked by a killer whale. Current health" + seaLion.getHealth());
     }
 
@@ -157,7 +157,7 @@ public class EventSimulator {
         return seaLion.getHealth() > 0;
     }
 
-    private void checkLowEnergy(SeaLion seaLion) {
+    private void checkLowHealth(SeaLion seaLion) {
         if (seaLion.getEnergy() <= 0) {
             int health = seaLion.getHealth();
             health = health - 5;
@@ -169,14 +169,14 @@ public class EventSimulator {
 
     }
 
-    private void checkHealth(SeaLion seaLion) {
+    private void checkHighHealth(SeaLion seaLion) {
         int health = seaLion.getHealth();
         if (health > 100) {
             health = 100;
         }
     }
 
-    private void checkHighEnergy(SeaLion seaLion) {
+    private void checkEnergy(SeaLion seaLion) {
         int energy = seaLion.getEnergy();
         if (energy > 100) {
             energy = 100;

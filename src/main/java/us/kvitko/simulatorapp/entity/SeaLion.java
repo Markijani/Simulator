@@ -1,4 +1,4 @@
-package simulatorapp.entity;
+package us.kvitko.simulatorapp.entity;
 
 public class SeaLion {
 

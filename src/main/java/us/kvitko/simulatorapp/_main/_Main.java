@@ -1,7 +1,7 @@
-package simulatorapp._main;
+package us.kvitko.simulatorapp._main;
 
-import simulatorapp.entity.SeaLion;
-import simulatorapp.util.EventSimulator;
+import us.kvitko.simulatorapp.entity.SeaLion;
+import us.kvitko.simulatorapp.util.EventSimulator;
 
 public class _Main {
 
